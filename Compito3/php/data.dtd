@@ -1,0 +1,13 @@
+<!ELEMENT catalogo (SappySeal+)>
+
+<!ELEMENT SappySeal (nftId, prezzo, descrizione)>
+<!ATTLIST SappySeal
+    id CDATA #REQUIRED
+    categoria (occhiali | cappello | sfondo_colorato
+    | occhiali-cappello | occhiali-cappello-sfondo_colorato | cappello-sfondo_colorato) #REQUIRED
+    disponibilita ( esaurito | limitato) "limitato"
+>
+
+<!ELEMENT nftId (#PCDATA)>
+<!ELEMENT prezzo (#PCDATA)>
+<!ELEMENT descrizione (#PCDATA)>

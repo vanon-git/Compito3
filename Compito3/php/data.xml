@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogo SYSTEM "data.dtd">
+<catalogo>
+    <SappySeal id="Nft1" categoria="occhiali-cappello" disponibilita="limitato">
+        <nftId>SappySeals_6589</nftId>
+        <prezzo>247</prezzo>
+        <descrizione>Occhiali da sci e cappello arancione</descrizione>
+    </SappySeal>
+
+    <SappySeal id="Nft2" categoria="occhiali" disponibilita="esaurito">
+        <nftId>SappySeals_8569</nftId>
+        <prezzo>245.99</prezzo>
+        <descrizione>Benda da pirata</descrizione>
+    </SappySeal>
+
+    <SappySeal id="Nft3" categoria="cappello" disponibilita="limitato">
+        <nftId>SappySeals_2546</nftId>
+        <prezzo>458.5</prezzo>
+        <descrizione>Cappello nero e vestito SWAT</descrizione>
+    </SappySeal>
+
+    <SappySeal id="Nft4" categoria="cappello-sfondo_colorato" disponibilita="limitato">
+        <nftId>SappySeals_4598</nftId>
+        <prezzo>1478.99</prezzo>
+        <descrizione>Cappello blu e sfondo arancione</descrizione>
+    </SappySeal>
+
+    <SappySeal id="Nft5" categoria="cappello-sfondo_colorato" disponibilita="esaurito">
+        <nftId>SappySeals_1456</nftId>
+        <prezzo>85.5</prezzo>
+        <descrizione>Corona e sfondo colorato</descrizione>
+    </SappySeal>
+
+    <SappySeal id="Nft6" categoria="occhiali-cappello-sfondo_colorato" disponibilita="limitato">
+        <nftId>SappySeals_4587</nftId>
+        <prezzo>412.99</prezzo>
+        <descrizione>Occhiali con visiera e corna da alce con sfondo colorato</descrizione>
+    </SappySeal>
+</catalogo>

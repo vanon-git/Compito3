@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+body {
+    background-color: #e2e8f0; 
+    font-family: 'Outfit', Arial, sans-serif;
+    color: #1e293b; 
+}
+
+/* Intestazione principale in alto */
+.header {
+    overflow: auto;
+    border-radius: 10px 10px 0px 0px;
+    width: 55%;
+    height: 10%;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    background: #0f172a; 
+    border-bottom: 4px solid #3b82f6; 
+    color: #ffffff; 
+}
+
+/* Colonna laterale destra */
+.header1 {
+    border-radius: 10px 10px 10px 10px;
+    width: 19.25%;
+    height: 35%;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    background: #ffffff; 
+    overflow: auto;
+    float: right;
+    border: 1px solid #cbd5e1; 
+}
+
+/* Colonna laterale sinistra */
+.header2 {
+    border-radius: 10px 10px 10px 10px;
+    width: 19.25%;
+    height: 35%;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    background: #ffffff; 
+    overflow: auto;
+    float: left;
+    border: 1px solid #cbd5e1;
+}
+
+/* Blocco centrale */
+.center {
+    width: 55%;
+    height: 35%;
+    overflow: auto;
+    margin: auto;
+    text-align: center;
+    align-content: center; 
+    background: #ffffff; 
+    border: 1px solid #cbd5e1;
+}
+
+/* Footer a fondo pagina */
+.footer {
+    border-radius: 0px 0px 10px 10px;
+    width: 55%;
+    height: 10%;
+    overflow: auto;
+    margin: auto;
+    text-align: right;
+    align-content: center;
+    background: #0f172a; 
+    border-top: 4px solid #3b82f6; 
+    color: #94a3b8; 
+}
+
+/* Stile per le immagini grandi */
+.img {
+    display: inline-block; 
+    vertical-align: top;   
+    margin: 1%;            
+    width: 46%;            
+    height: 45%;           
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    object-fit: cover;     
+}
+
+/* Stile per le immagini piccole laterali (destra) */
+.img2 {
+    border-radius: 6px;
+    margin: auto;
+    width: 18.5%;
+    height: 18.5%;
+    float: right;
+    border: 1px solid #e2e8f0;
+}
+
+/* Stile per le immagini piccole laterali (standard) */
+.img3 {
+    border-radius: 6px;
+    margin: auto;
+    width: 18.5%;
+    height: 18.5%;
+    border: 1px solid #e2e8f0;
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+    color: #1d4ed8; 
+    text-transform: uppercase;
+}
+
+/* --- BOTTONI MENU MODIFICATI --- */
+.menu-link, .menu-link-a, .menu-link-b {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    background-color: #ffffff; 
+    border: 2px solid #3b82f6; 
+    color: #3b82f6; 
+    width: 175px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.2s; 
+    padding: 0; /* Tolto il padding da qui */
+    overflow: hidden; /* Assicura che il link rispetti i bordi tondi */
+}
+
+/* NUOVO: Stile per il link (la scritta cliccabile) */
+.menu-link a, .menu-link-a a, .menu-link-b a {
+    display: block;      /* Occupa tutto lo spazio del bottone */
+    padding: 10px;       /* Il padding va qui per rendere cliccabile l'area */
+    width: 100%;         
+    height: 100%;
+    text-decoration: none;
+    color: inherit;      /* Prende il colore dal contenitore */
+    box-sizing: border-box;
+}
+
+.menu-link:hover, .menu-link-a:hover, .menu-link-b:hover {
+    background-color: #3b82f6; 
+    color: #ffffff; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    cursor: pointer;
+}
+/* -------------------------------- */
+
+a:visited { color: #64748b; }
+a1:visited { color: #64748b; }
+
+p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    color: #334155; 
+}
+
+/* Galleria */
+.galleria {
+    display: flex;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.immagine {
+    margin-right: 10px;
+    max-width: 200px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.lettere {
+    color: #1d4ed8; 
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+}
+
+.immagine img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.preferiti { 
+    margin-top: 10px; 
+    border-top: 1px dashed #cbd5e1; 
+    padding-top: 10px; 
+}
+
+.div2 {
+    align-content: center;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+}

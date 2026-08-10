@@ -1,0 +1,118 @@
+/* il riquadro bianco al centro */
+.login-card {
+    background-color: #ffffff;
+    width: 320px;
+    margin: 80px auto;          /* centra e stacca dall'alto */
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Outfit', Arial, sans-serif;
+    text-align: center;
+}
+
+/* titolo del form */
+.login-card h3 {
+    color: #0f172a;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 2px solid #3b82f6; /* riga blu sotto */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* scritte sopra i campi (username/password) */
+.login-card p {
+    text-align: left;
+    color: #3b82f6;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 15px 0 5px 0;
+}
+
+/* stile delle caselle dove scrivi */
+.login-card input[type="text"], 
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    box-sizing: border-box; /* fondamentale per non sballare le misure */
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* quando clicchi dentro la casella */
+.login-card input[type="text"]:focus, 
+.login-card input[type="password"]:focus {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* bottone principale (accedi) */
+.login-card input[name="invio"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer; /* fa vedere la manina del mouse */
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.login-card input[name="invio"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* bottoni secondari (reset e registrati) */
+.login-card input[name="reset"], 
+.login-card input[name="registrati"] {
+    width: 48%; /* occupano metà spazio per uno */
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+/* li metto uno a destra e uno a sinistra */
+.login-card input[name="reset"] {
+    float: left;
+}
+
+.login-card input[name="registrati"] {
+    float: right;
+}
+
+/* effetto al passaggio del mouse sui secondari */
+.login-card input[name="reset"]:hover, 
+.login-card input[name="registrati"]:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+/* pulisco i float per non rompere il layout sotto */
+.login-card::after {
+    content: "";
+    display: table;
+    clear: both;
+}
