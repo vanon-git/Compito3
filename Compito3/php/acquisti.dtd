@@ -9,8 +9,8 @@
 <!ELEMENT date (#PCDATA)>
 <!ELEMENT totaleSpesa (#PCDATA)>
 
-<!ELEMENT NFTs (NFT+)>
-<!ELEMENT NFT (nftId, prezzo, quantita)>
+<!ELEMENT articoli (NFT+)>
+<!ELEMENT articolo (nftId, prezzo, quantita)>
 
 <!ELEMENT nftId (#PCDATA)>
 <!ELEMENT prezzo (#PCDATA)>

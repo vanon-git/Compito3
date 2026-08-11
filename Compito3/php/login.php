@@ -37,7 +37,7 @@
                 $_SESSION['totaleAcquisti']=$row['totaleAcquisti'];
                 $_SESSION['dataLogin']=time();
                 $_SESSION['accessoPermesso']=1000;
-                header('Location: shop.php');    // Rimando l'utente alla pagina dello shop
+                header('Location: shop_xml.php');    // Rimando l'utente alla pagina dello shop
                 exit();
             }else 
                 echo "<p>Utente non trovato, riprova oppure se non sei registrato torna alla home e clicca su registrati</p>";

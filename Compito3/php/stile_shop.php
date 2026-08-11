@@ -225,6 +225,71 @@ $stile_shop = "
         box-shadow: 0 26px 70px rgba(15, 23, 42, 0.18);
     }
 
+    .container-ordini {
+        flex: 1;
+    }
+
+    .titolo-ordini {
+        font-size: 28px;
+        color: #f6f7f9;
+        margin-bottom: 30px;
+    }
+
+        .ordini-vuoto {
+        background: #17181b;
+        border: 1px solid #26272b;
+        border-radius: 12px;
+        padding: 60px;  
+        text-align: center;
+    }
+
+    .ordini-vuoto p {
+        font-size: 20px;
+        color: #a3a6ad;
+        margin-bottom: 30px;
+    }
+
+    .ordini-vuoto a {
+        background: #27ae60;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .ordini-pieno {
+        background: #17181b;
+        border: 1px solid #26272b;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .header-ordine {
+        padding: 20px; 
+        border-bottom: 2px solid #2ec4b6; 
+        background: #1a1b1e;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .contenuto-header {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+    }
+
+    .articolo-ordine {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        border-bottom: 1px solid #26272b;
+    }
+
+
     .scheda-meraviglia img {
         width: 100%;
         height: 190px;
@@ -240,6 +305,29 @@ $stile_shop = "
         flex-direction: column;
         flex: 1;
         gap: 10px;
+    }
+
+    .info-scheda {
+        display: flex; 
+        gap: 10px; 
+        margin: 8px 0; 
+        flex-wrap: wrap;
+    }
+
+    .descrizione-scheda {
+        color: #a3a6ad; 
+        font-size: 0.9em; 
+        margin: 10px 0; 
+        line-height: 1.4;
+    }
+        
+    .info {
+        background: #26272b; 
+        color: #2ec4b6; 
+        padding: 4px 10px; 
+        border-radius: 5px; 
+        font-size: 0.75em; 
+        font-weight: bold;
     }
 
     .titolo-scheda {
@@ -582,6 +670,29 @@ $stile_shop = "
         font-weight: 800;
     }
 
+    .box-info {
+        background: #17181b; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border-left: 4px solid #2ec4b6; 
+        margin: 20px 0 40px 0;
+    }
+
+    .contenuto-info {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        flex-wrap: wrap; 
+        gap: 15px;
+    }
+        
+    .container-azioni {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
     .valore-totale {
         font-size: 28px;
         font-weight: 900;
@@ -695,6 +806,25 @@ $stile_shop = "
         color: var(--ink);
     }
     .spesa-totale strong { color: var(--ink); }
+
+    .totale {
+        background: #1a1b1e; 
+        padding: 20px; 
+        border-radius: 8px; 
+        text-align: right; 
+        margin-top: 20px;
+    }
+
+    .text-totale {
+        color: #a3a6ad; 
+        margin-bottom: 5px;
+    }
+
+    .price-totale {
+        font-size: 28px; 
+        color: #2ec4b6; 
+        font-weight: bold;
+    }
 
     .container-errore {
         background: rgba(255,255,255,0.85);

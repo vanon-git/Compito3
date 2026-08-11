@@ -1,54 +1,18 @@
 <?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
     session_start();
 
-    // se non ho il permesso di accesso, rimando al login
-    if (!isset($_SESSION['accessoPermesso']))
-        header('Location: login.php');
-
-    // collego il database e il file di stile
-    require_once("./connessione.php");
-    require_once("./stile_shop.php");
-
-    // preparo le variabili per il totale e la lista degli NFT
-    $_SESSION['daPagare'] = 0; 
-    $ListaNft = array(); 
-
-    // controllo se c'è qualcosa nel carrello
-    if (isset($_SESSION['carrello']) && count($_SESSION['carrello']) > 0) {
-
-        foreach ($_SESSION['carrello'] as $indice => $nome) {
-            
-            // pulisco il nome per sicurezza prima di usarlo nella query
-            $nomeSafe = mysqli_real_escape_string($mysqliConnection, $nome);
-
-            // cerco i dati dell'NFT e la sua immagine unendo le tabelle
-            $sql = "SELECT n.nome, n.costoNft, i.percorsofile FROM " . TBL_NFT . " AS n LEFT JOIN " . TBL_IMMAGINI_NFT . " AS i ON n.nftId = i.nftId WHERE n.nome = '$nomeSafe' LIMIT 1";
-            
-            // eseguo la query
-            if (!$resultQ = mysqli_query($mysqliConnection, $sql)) {
-                printf("Errore query: %s\n", mysqli_error($mysqliConnection));
-                exit();
-            }
-            
-            // se trovo il prodotto
-            if ($row = mysqli_fetch_array($resultQ)) {
-                // aggiungo il prezzo al totale
-                $_SESSION['daPagare'] += $row['costoNft'];
-                
-                // se c'è un'immagine la uso, altrimenti ne metto una bianca standard
-                $imgTrovata = (!empty($row['percorsofile'])) ? $row['percorsofile'] : "bianco.jpg";
-                
-                // salvo i dati in un array per stamparli dopo nell'HTML
-                $ListaNft[] = array(
-                    "nome" => $row['nome'],
-                    "prezzo" => $row['costoNft'],
-                    "immagine" => $imgTrovata
-                );
-            }
-        }
+    // Controllo accesso
+    if (!isset($_SESSION['accessoPermesso'])) {
+        header("Location: login.php");
+        exit();
     }
-?>
 
+    require_once('./stile_shop.php');
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -98,11 +62,90 @@
                 ?>  
                     <div class="riepilogo-vuoto">
                         <p>Il tuo carrello è vuoto</p>
-                        <a href="shop.php">Vai al Catalogo</a>
+                        <a href="shop_xml.php">Vai al Catalogo</a>
                     </div>
                 <?php 
                     // altrimenti mostro gli articoli
                     } else {
+                ?>
+                                <?php
+                // Verifichiamo se il file xml esiste
+                    if (!file_exists('data.xml')) {
+                        die("Errore: file data.xml non trovato");
+                    }
+
+                    
+                    // Costruiamo una stringa con il contenuto del file
+                    $xmlString = "";
+                    foreach ( file("data.xml") as $node ) {
+                        $xmlString .= trim($node);
+                    }
+
+                    // Creazione del documento
+                    $doc = new DOMDocument();
+
+                    // Carica contentuo del file nel documento $doc con DOM
+                    if (!$doc->loadXML($xmlString)) {
+                        die("Errore durante il parsing");
+                    }
+
+                    // $NFTs è la lista degli elementi figli della radice catalogo del documento XML data.xml
+                    $NFTs = $doc->documentElement->childNodes;
+
+
+                    // Array immagini
+                    $immagini = array(
+                        "SappySeals_6589" => "../imgCarr/imgcostosa1.png",
+                        "SappySeals_8569" => "../imgCarr/imgcostosa5.png",
+                        "SappySeals_2546" => "../imgCarr/imgcostosa9.png",
+                        "SappySeals_4598" => "../imgCarr/imgrara3.png",
+                        "SappySeals_1456" => "../imgCarr/imgrara7.png",
+                        "SappySeals_4587" => "../imgCarr/imgrara8.png",
+                    );
+
+                    
+                    // Crea una mappa del tipo:  nftId → prezzo  dal DOM
+                    $catalogoMap = array();
+
+                    for($i=0; $i<$NFTs->length; $i++){
+                        $NFT = $NFTs->item($i);
+
+                        $nftId = $NFT->firstChild;
+                        $nftIdValue = $nftId->textContent;
+                        $prezzo = $nftId->nextSibling;   // nextSibling ci porta al prossimo sottoelemento
+                        $prezzoValue = $prezzo->textContent;
+                        
+                        $catalogoMap[$nftIdValue] = $prezzoValue;
+                    }
+
+                    // Calcola il totale da pagare
+                    $_SESSION['daPagare'] = 0;
+                    // Raggruppa gli articoli uguali
+                    $articoliRaggruppati = array(); // Array per raggruppare
+
+                    // Conta le occorrenze di ogni NFT nel carrello
+                    // Avremo una cosa del genere: Array ( [Grande Muraglia, Cina] => 2 [Cristo Redentore, Rio de Janeiro] => 2 )
+                    $conteggioCarrello = array_count_values($_SESSION['carrello']);
+                    //print_r($conteggioCarrello);
+
+                    foreach ($conteggioCarrello as $nomeNFT => $quantita) {
+                        if (isset($catalogoMap[$nomeNFT])) {
+                            $prezzoUnitario = $catalogoMap[$nomeNFT];
+                            $subtotale = $prezzoUnitario * $quantita;
+                            
+                            // Accumula totale generale
+                            $_SESSION['daPagare'] += $subtotale;
+                            
+                            // Aggiungi all'array raggruppato
+                            $articoliRaggruppati[] = array(
+                                'nome' => $nomeNFT,
+                                'prezzoUnitario' => $prezzoUnitario,
+                                'quantita' => $quantita,
+                                'subtotale' => $subtotale,
+                                'immagine' => isset($immagini[$nomeNFT]) ? $immagini[$nomeNFT] : 'bianco.jpg'
+                            );
+                        }
+                    }
                 ?>
                     <div class="riepilogo-pieno">
                         <?php

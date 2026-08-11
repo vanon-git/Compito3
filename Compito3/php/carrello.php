@@ -8,7 +8,6 @@
     if (!isset($_SESSION['accessoPermesso']))
         header('Location: login.php');
     
-    require_once("./connessione.php");
     require_once("./stile_shop.php");
 
     // variabile per stampare messaggi di conferma
@@ -98,44 +97,12 @@
                             <div class="carrello-pieno">
                                 <?php 
                                     // scorro tutti gli articoli salvati nella sessione
-                                    foreach ($_SESSION['carrello'] as $indice => $nomeProdotto){
-                                        
-                                        // pulisco il nome per sicurezza prima di usarlo nella query
-                                        $nomeSafe = mysqli_real_escape_string($mysqliConnection, $nomeProdotto);
-                                        
-                                        // cerco i dettagli (prezzo e immagine) di questo prodotto specifico
-                                        $sqlSingolo = "SELECT n.nome, n.costoNft, i.percorsofile FROM " . TBL_NFT . " AS n LEFT JOIN " . TBL_IMMAGINI_NFT . " AS i ON n.nftId = i.nftId WHERE n.nome = '$nomeSafe' LIMIT 1";
-                                        
-                                        $resultSingolo = mysqli_query($mysqliConnection, $sqlSingolo);
-                                        $datiProdotto = mysqli_fetch_array($resultSingolo);
-
-                                        // se trovo il prezzo lo uso, altrimenti metto 0
-                                        $prezzoCorrente = isset($datiProdotto['costoNft']) ? $datiProdotto['costoNft'] : "0.00";
-                                        
-                                        // controllo se c'è l'immagine
-                                        // controllo se c'è l'immagine
-                                        $immagineCorrente = "bianco.jpg"; // immagine standard
-                                        if (isset($datiProdotto['percorsofile']) && !empty($datiProdotto['percorsofile'])) {
-                                            $immagineCorrente = $datiProdotto['percorsofile'];
-                                        }
-                                ?>
-                                    
-                                    <div class="articolo-carrello">
-                                        <!-- casella per selezionare l'articolo da eliminare -->
-                                        <input type="checkbox" name="eliminandi[]" value="<?php echo $indice; ?>" />
-                                        
-                                        <img src="<?php echo $immagineCorrente; ?>" class="immagine-articolo" alt="<?php echo $nomeProdotto; ?>" />
-                                        
-                                        <div class="info-articolo">
-                                            <span class="nome-articolo"><?php echo $nomeProdotto; ?></span>
+                                    foreach ($_SESSION['carrello'] as $indice => $nomeNFT){
+                                     ?>
+                                        <div class="articolo-carrello">
+                                            <input type="checkbox" name="eliminandi[]" value="<?php echo $indice; ?>" /> <?php echo $nomeNFT; ?>
                                         </div>
-
-                                        <div class="prezzo-articolo">
-                                            <?php echo $prezzoCorrente; ?> &euro;
-                                        </div>
-                                    </div>
-
-                                <?php 
+                                        <?php
                                     } 
                                 ?>
                             </div>
@@ -147,12 +114,12 @@
 
                                 <input type="reset" name="annullaSelezionati" class="bottone-bianco" value="Deseleziona Tutto" />
 
-                                <a href="shop.php" class="bottone-grigio"> Continua Acquisti </a>
+                                <a href="shop_xml.php" class="bottone-grigio"> Continua acquisti </a>
                                 
-                                <a href="riepilogo.php" class="bottone-acqua"> Vai al Pagamento </a>
+                                <a href="riepilogo_xml.php" class="bottone-acqua"> Vai al pagamento </a>
                             </div>
                         </form>
-                <?php 
+                        <?php 
                     } 
                 ?>
             </div>
