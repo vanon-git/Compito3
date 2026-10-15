@@ -200,7 +200,7 @@ $stile_shop = "
 
     /* --- GRIGLIA PRODOTTI (SHOP) --- */
 
-    .container-meraviglie {
+    .container-nft {
         flex: 1;
         display: grid; /* uso la griglia invece del flex perchè è più comoda per le schede */
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -208,7 +208,7 @@ $stile_shop = "
         align-items: stretch;
     }
 
-    .scheda-meraviglia {
+    .scheda-nft {
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 22px;
@@ -220,7 +220,7 @@ $stile_shop = "
         transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    .scheda-meraviglia:hover {
+    .scheda-nft:hover {
         transform: translateY(-6px);
         box-shadow: 0 26px 70px rgba(15, 23, 42, 0.18);
     }
@@ -290,7 +290,7 @@ $stile_shop = "
     }
 
 
-    .scheda-meraviglia img {
+    .scheda-nft img {
         width: 100%;
         height: 190px;
         display: block;

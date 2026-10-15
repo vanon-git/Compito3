@@ -121,7 +121,7 @@
                     // Calcola il totale da pagare
                     $_SESSION['daPagare'] = 0;
                     // Raggruppa gli articoli uguali
-                    $articoliRaggruppati = array(); // Array per raggruppare
+                    $ListaNft = array(); // Array per raggruppare
 
                     // Conta le occorrenze di ogni NFT nel carrello
                     // Avremo una cosa del genere: Array ( [Grande Muraglia, Cina] => 2 [Cristo Redentore, Rio de Janeiro] => 2 )
@@ -137,7 +137,7 @@
                             $_SESSION['daPagare'] += $subtotale;
                             
                             // Aggiungi all'array raggruppato
-                            $articoliRaggruppati[] = array(
+                            $ListaNft[] = array(
                                 'nome' => $nomeNFT,
                                 'prezzoUnitario' => $prezzoUnitario,
                                 'quantita' => $quantita,
@@ -156,7 +156,7 @@
                                 <div class="info-articolo">           
                                     <div class="nome-articolo"><?php echo $SingoloNft['nome']; ?></div>
                                 </div>
-                                <div class="prezzo-articolo"><?php echo $SingoloNft['prezzo']; ?> &euro; </div>
+                                <div class="prezzo-articolo"><?php echo $SingoloNft['prezzoUnitario']; ?> &euro; </div>
                             </div>
                         <?php 
                             }
@@ -169,9 +169,9 @@
                         <div class="valore-totale"><?php echo $_SESSION['daPagare']; ?> &euro;</div>
                     </div>
 
-                    <form action="pagamento.php" method="post">
+                    <form action="pagamento_xml.php" method="post">
                         <div class="container-bottoni">
-                            <a href="shop.php" class="bottone-grey">Continua con gli acquisti</a>
+                            <a href="shop_xml.php" class="bottone-grey">Continua con gli acquisti</a>
                             <input type="submit" name="invioPagamento" value="Procedi con il pagamento" class="bottone-verde" />
                         </div>
                     </form>

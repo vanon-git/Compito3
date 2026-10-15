@@ -38,15 +38,15 @@
 
         $quantitaGiaAcquistata = 0;
 
-        for ($i = 0; $i < $Acquisti->length; $i++) {   // $i va da 0 a 3
-            $Acquisto = $Acquisti->item($i);  // Prima item(0), poi item(1), poi item(2)
+        for ($i = 0; $i < $acquisti->length; $i++) {   // $i va da 0 a 3
+            $Acquisto = $acquisti->item($i);  // Prima item(0), poi item(1), poi item(2)
 
             // Dentro questo Acquisto specifico, cerca <username>
             // (ce n'è solo UNO per Acquisto)
             $usernameAcquisto = $Acquisto->getElementsByTagName('username')->item(0)->textContent;
             // → Sempre item(0) perché c'è solo UN username per Acquisto
             
-            // Controlla solo gli Ac$Acquisti dell'utente corrente
+            // Controlla solo gli $acquisti dell'utente corrente
             if ($usernameAcquisto == $_SESSION['username']) {
 
                 //getElementsByTagName('articolo') restituisce una LISTA (array) che contiene tutti gli elementi <articolo> di quello specifico Acquisto
@@ -66,7 +66,6 @@
                 }
 
                 // Aggiungi la quantità di questo NFT al totale storico
-                // Esempio: se aveva già 2 "Grande Muraglia" e ne trova altri 3, diventa 2 + 3 = 5
                 $acquistatiStorico[$nomeNftAcquisto] += $qta;
             }
         }
@@ -100,7 +99,7 @@
     }
 
 
-    // $biglietti è la lista degli elementi figli di catalogo del documento XML data.xml
+    // $NFTs è la lista degli elementi figli di catalogo del documento XML data.xml
     $NFTs = $doc->documentElement->childNodes;
 
     // Array immagini
@@ -108,9 +107,9 @@
         "SappySeals_6589" => "../imgCarr/imgcostosa1.png",
         "SappySeals_8569" => "../imgCarr/imgcostosa5.png",
         "SappySeals_2546" => "../imgCarr/imgcostosa9.png",
-        "SappySeals_4598" => "../imgCarr/imgrara3.png",
-        "SappySeals_1456" => "../imgCarr/imgrara7.png",
-        "SappySeals_4587" => "../imgCarr/imgrara8.png",
+        "SappySeals_4598" => "../imgCarr/imgrara3.jpg",
+        "SappySeals_1456" => "../imgCarr/imgrara7.jpg",
+        "SappySeals_4587" => "../imgCarr/imgrara8.jpg",
     );
 
 ?>
@@ -142,7 +141,7 @@
                     <div class="messaggio-aggiunto">
                         <p><strong><i class="fas fa-circle-check"></i> Aggiunto al carrello:</strong> <?php echo $_POST['selection']; ?></p>
                         <a href="carrello.php">Vai al carrello (<?php echo count($_SESSION['carrello']); ?> NFTs)</a> oppure
-                        <a href="riepilogo.php">Vai al pagamento (<?php echo count($_SESSION['carrello']); ?> NFTs)</a>
+                        <a href="riepilogo_xml.php">Vai al pagamento (<?php echo count($_SESSION['carrello']); ?> NFTs)</a>
                     </div>
                     <?php
                 }
@@ -173,13 +172,13 @@
                 </div>
                 <!-- Info DTD -->
                 <div class="etichetta-sidebar">Modalità XML/DOM Validazione DTD</div>
-                <div class="valore-sidebar" style="padding: 15px; background: #26272b; border-radius: 8px; border-left: 3px solid white;">
+                <div class="valore-sidebar" style="padding: 15px; background: #ffffff; border-radius: 10px; border-left: 3px solid white;">
                     <?php echo $validDTD ?> 
                 </div>
             </div>
             
             <!-- griglia con i prodotti -->
-            <div class="container-meraviglie">
+            <div class="container-nft">
                 <?php
                 for($i=0; $i<$NFTs->length; $i++){
                     /* i-esimo NFT del documento, questo ha quattro sottoelementi: 
@@ -221,7 +220,7 @@
                         $badgeColor = "#95a5a6";  // default se non esiste
                     }
                 ?>       
-                    <div class="scheda-meraviglia">
+                    <div class="scheda-nft">
                         <img src="<?php echo $immagineFinale; ?>" alt="<?php echo $nftIdValue; ?>"/>
                         <div class="contenuto-scheda">
                             <div class="titolo-scheda"> <?php echo $nftIdValue; ?> </div>
@@ -252,8 +251,8 @@
                                     // 1. Conta quanti ne hai nel carrello
                                     $quantitaNelCarrello = 0;
                                     if (isset($_SESSION['carrello'])) {
-                                        foreach ($_SESSION['carrello'] as $indice => $nomeNFT) {
-                                            if ($nomeNFT == $nftIdValue) {
+                                        foreach ($_SESSION['carrello'] as $indice => $nftId) {
+                                            if ($nftId == $nftIdValue) {
                                                 $quantitaNelCarrello++;
                                             }
                                         }
@@ -279,7 +278,7 @@
                                     <?php } ?>
 
                             <?php }else{  ?>
-                                    <!-- Biglietto disponibile: input normale -->
+                                    <!-- NFT disponibile: input normale -->
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                         <input type="hidden" name="selection" value="<?php echo $nftIdValue; ?>"/>
                                         <input type="submit" name="aggiungiAlCarrello" class="bottone-aggiungi" value="Aggiungi al carrello"/>

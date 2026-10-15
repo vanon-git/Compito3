@@ -40,7 +40,7 @@
 
             // Calcoliamo il nuovo totale
             // Somma quanto pagato ora + quanto speso in passato
-            $nuovoTotale = $_SESSION['daPagare'] + $_SESSION['spesaFinora'];
+            $nuovoTotale = $_SESSION['daPagare'] + $_SESSION['totaleAcquisti'];
             
             // Verifichiamo se il file xml esiste
             if (!file_exists('data.xml')) {
@@ -131,10 +131,10 @@
                 for ($i = 0; $i < $NFTs->length; $i++) {
                     $NFT = $NFTs->item($i);
                     
-                    $nftId = $biglietto->firstChild;
+                    $nftId = $NFT->firstChild;
                     $nftIdValue = $nftId->textContent;
                     if ($nftIdValue == $nomeNFT) {
-                        $prezzo = $nome->nextSibling;
+                        $prezzo = $nftId->nextSibling;
                         $prezzoTrovato = $prezzo->textContent;
                         // Il break serve per uscire dal ciclo for non appena viene trovato l’elemento desiderato, 
                         // evitando di continuare a controllare gli altri
@@ -161,7 +161,7 @@
             
             $nuovoAcquisto->appendChild($elemArticoli);
 
-            $primoAcquisto = $acquisto->firstChild;
+            $primoAcquisto = $acquisti->firstChild;
 
             // Aggiungi ordine alla radice <acquisto>, ma come nuovo primo figlio
             $acquisti->insertBefore($nuovoAcquisto,$primoAcquisto);
@@ -171,9 +171,9 @@
             $filename="acquisti.xml";
             if ($docAcquisti->save($filename)){
                 // QUERY UPDATE: aggiorna la spesa dell'utente
-                $sql = "UPDATE $Utenti_table_name 
-                        SET sommeSpese = \"$nuovoTotale\" 
-                        WHERE username = \"{$_SESSION['username']}\"";
+                $sql = "UPDATE " . TBL_UTENTI . "
+                        SET totaleAcquisti = \"$nuovoTotale\" 
+                        WHERE username = '{$_SESSION['username']}'";
                 
                 // Eseguiamo la query e la controlliamo
                 if (!mysqli_query($mysqliConnection, $sql) || mysqli_affected_rows($mysqliConnection) != 1) {
@@ -187,7 +187,7 @@
                     $pagamentoOk = true;
 
                     // Aggiorna la sessione con il nuovo totale
-                    $_SESSION['spesaFinora'] = $nuovoTotale;
+                    $_SESSION['totaleAcquisti'] = $nuovoTotale;
                     
                     // Svuotiamo il carrello
                     $_SESSION['carrello'] = array();
@@ -264,7 +264,7 @@
                         <div class="box-info">
                             <div class="contenuto-info">
                                 <div style="color: #a3a6ad; font-size: 20px;">Per vedere la cronologia degli Acquisti: </div>
-                                <a href="ordini_utente.php" class="bottone"><i class="fas fa-box"></i> I Miei Acquisti </a>
+                                <a href="acquisti_utente.php" class="bottone"><i class="fas fa-box"></i> I Miei Acquisti </a>
                             </div>
                         </div>
                         <div class="container-azioni">

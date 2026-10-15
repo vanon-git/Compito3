@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 
-// RICHIAMA SOLO CONNESSIONE, COME VOLEVI TU!
+// RICHIAMA CONNESSIONE
 require_once "connessione.php";
 
 echo "<h3>Creazione e Popolazione Compito3</h3>";

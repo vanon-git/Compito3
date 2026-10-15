@@ -1,7 +1,7 @@
 <?php
 require_once "datiGenerali.php";
 
-// 1. Spegniamo temporaneamente le eccezioni fatali di MySQL (introdotte in PHP 8.1+)
+// 1. Spegniamo temporaneamente le eccezioni fatali di MySQL 
 mysqli_report(MYSQLI_REPORT_OFF);
 
 // 2. Ci colleghiamo al DBMS (Senza database)
@@ -25,5 +25,5 @@ if (!mysqli_select_db($mysqliConnection, DB_NAME)) {
 // 4. Riaccendiamo le eccezioni per far funzionare bene gli errori nel resto del sito
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-// Fatto! Ora $mysqliConnection è pronto e puntato su Compito2
+// Fatto! Ora $mysqliConnection è pronto e puntato su Compito3
 ?>

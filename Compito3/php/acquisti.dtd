@@ -1,15 +1,15 @@
 <!ELEMENT acquisti (acquisto*)>
 
-<!ELEMENT acquisto (username, date, totaleSpesa, articoli)>
+<!ELEMENT acquisto (username, date, totale, articoli)>
 <!ATTLIST acquisto
     id CDATA #REQUIRED
 >
 
 <!ELEMENT username (#PCDATA)>
 <!ELEMENT date (#PCDATA)>
-<!ELEMENT totaleSpesa (#PCDATA)>
+<!ELEMENT totale (#PCDATA)>
 
-<!ELEMENT articoli (NFT+)>
+<!ELEMENT articoli (articolo+)>
 <!ELEMENT articolo (nftId, prezzo, quantita)>
 
 <!ELEMENT nftId (#PCDATA)>

@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE ordini SYSTEM "ordini.dtd">
+<!DOCTYPE acquisti SYSTEM "acquisti.dtd">
 <!-- Gli ordini verranno aggiunti qui automaticamente-->
 <acquisti>
-
+  <acquisto id="1153">
+    <username>g.pacio</username>
+    <date>11-08-2026 19:15:20</date>
+    <totale>247</totale>
+    <articoli>
+      <articolo>
+        <nftId>SappySeals_6589</nftId>
+        <prezzo>247</prezzo>
+        <quantita>1</quantita>
+      </articolo>
+    </articoli>
+  </acquisto>
+  <acquisto id="6240">
+    <username>g.pacio</username>
+    <date>11-08-2026 19:15:01</date>
+    <totale>1375.5</totale>
+    <articoli>
+      <articolo>
+        <nftId>SappySeals_2546</nftId>
+        <prezzo>458.5</prezzo>
+        <quantita>3</quantita>
+      </articolo>
+    </articoli>
+  </acquisto>
+  <acquisto id="4437">
+    <username>g.pacio</username>
+    <date>11-08-2026 18:57:44</date>
+    <totale>705.5</totale>
+    <articoli>
+      <articolo>
+        <nftId>SappySeals_2546</nftId>
+        <prezzo>458.5</prezzo>
+        <quantita>1</quantita>
+      </articolo>
+      <articolo>
+        <nftId>SappySeals_6589</nftId>
+        <prezzo>247</prezzo>
+        <quantita>1</quantita>
+      </articolo>
+    </articoli>
+  </acquisto>
 </acquisti>

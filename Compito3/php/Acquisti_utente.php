@@ -19,7 +19,7 @@
     // Ogni elemento sarà un array associativo con: id, date, totale, articoli[]
     $userAcquisti = array();
 
-    // Verifichiamo se il file xml esiste
+    // Verifichiamo l'esistenza del file xml
     if (file_exists('acquisti.xml')) {
         $xmlString = "";
         foreach (file("acquisti.xml") as $node) {
@@ -41,7 +41,7 @@
         // $tuttiAcquisti è la lista degli elementi figli di acquisti del documento XML acquisti.xml
         $tuttiAcquisti = $doc->documentElement->childNodes;
 
-        // Filtra e legge gli acquisti dell'utente corrente con DOM 
+        // Seleziona e legge gli acquisti dell'utente corrente con DOM 
         for ($i = 0; $i < $tuttiAcquisti->length; $i++) {
             $acquisto = $tuttiAcquisti->item($i);
 
@@ -54,7 +54,7 @@
 
             // Se non è dell'utente corrente(loggato), salta
             if ($usernameValue == $_SESSION['username']){
-                // È un acquisto dell'utente corrente: leggiamo i dati
+                // È un acquisto dell'utente corrente: accediamo a i dati e leggiamoli
                 $date = $username->nextSibling;
                 $dateValue = $date->textContent;
 
@@ -126,7 +126,7 @@
         <div class="valore-sidebar"><?php echo $_SESSION['cognome']; ?></div>
         
         <div class="etichetta-sidebar">Finora hai speso:</div>
-        <div class="valore-sidebar"><?php echo $_SESSION['spesaFinora']; ?> &euro;</div>
+        <div class="valore-sidebar"><?php echo $_SESSION['totaleAcquisti']; ?> &euro;</div>
         
         <div class="etichetta-sidebar">Ti sei collegato alle:</div>
         <div class="valore-sidebar"><?php echo date('g:i a', $_SESSION['dataLogin']); ?></div>
@@ -134,14 +134,14 @@
         <?php if ($validDTD){ ?>
             <!-- Info DTD validazione -->
             <div class="etichetta-sidebar">Modalità XML/DOM Validazione DTD</div>
-            <div class="valore-sidebar" style="padding: 15px; background: #26272b; border-radius: 8px; border-left: 3px solid white;">
+            <div class="valore-sidebar" style="padding: 15px; background: #fffff; border-radius: 8px; border-left: 3px solid white;">
                 <?php echo $validDTD; ?>
             </div>
         <?php } ?>
     </div>
     
     <!-- Container Acquisti -->
-    <div class="container-ordini"> //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    <div class="container-ordini"> 
         <h2 class="titolo-ordini">
             <i class="fas fa-receipt"></i> I Miei Acquisti
         </h2>
@@ -152,17 +152,6 @@
                     <a href="shop_xml.php">Vai al Catalogo</a>
                 </div>
         <?php }else{ ?>
-                <?php //print_r($userOrdini); ?>
-                <!-- Avremo ad esempio un array fatto in questo modo: 
-                Array ( [0] => Array ( [id] => 4507 [date] => 2025-11-25 19:19:56 [totale] => 61.4 
-                                       [articoli] => Array ( [0] => Array ( [biglietto] => Grande Muraglia, Cina [prezzo] => 29.90 [quantita] => 1 [subtotale] => 29.9 ) 
-                                                             [1] => Array ( [biglietto] => Chichén Itzá, Yucatàn - Messico [prezzo] => 31.50 [quantita] => 1 [subtotale] => 31.5 ) 
-                                                            ) 
-                                      )
-                        [1] => Array ( [id] => 4407 [date] => 2025-11-25 17:52:25 [totale] => 29.9 
-                                       [articoli] => Array ( [0] => Array ( [biglietto] => Grande Muraglia, Cina [prezzo] => 29.90 [quantita] => 1 [subtotale] => 29.9 ) ) 
-                                      )                       
-                       ) -->
                 <?php foreach ($userAcquisti as $key => $acquisto){ ?>
                     <div class="ordini-pieno">
                         <!-- Header acquisto -->
@@ -205,7 +194,7 @@
                 <!-- Totale speso dall'utente -->
                 <div class="totale">
                     <div class="text-totale">Totale speso in tutti gli acquisti:</div>
-                    <div class="price-totale"> <?php echo $_SESSION['spesaFinora']; ?> &euro; </div>
+                    <div class="price-totale"> <?php echo $_SESSION['totaleAcquisti']; ?> &euro; </div>
                 </div>
 
                 <div class="stile-bottone">
