@@ -1,56 +1,46 @@
 # Studente: Mattia Vanon
 
-# Link GitHub: https://github.com/vanon-git/Compito2
+# Indirizzo repository: https://github.com/vanon-git/Compito3
 
 # 
 
 # Descrizione del lavoro
 
-# Per questo secondo homework ho realizzato un piccolo sito di e-commerce per la vendita di NFT (i "Sappy Seals"). Il sito permette di registrarsi, fare il login, aggiungere prodotti al carrello e completare l'acquisto, gestendo tutto tramite sessioni PHP e database MySQL.
+# Per questo terzo homework ho esteso il sito di e-commerce per NFT ("Sappy Seals") realizzato nel secondo homework, introducendo la gestione del catalogo prodotti e degli ordini tramite file XML invece del database.
 
 # 
 
-# Per svolgerlo ho preso spunto dagli esercizi visti a lezione, in particolare:
+# In particolare:
 
 # 
 
-# Gli esercizi PHP-13 e PHP-14 per capire come gestire il carrello e come popolare il database tramite script.
+# Il catalogo degli NFT è memorizzato in data.xml, con identificativo, prezzo, descrizione e disponibilità di ciascun prodotto.
 
 # 
 
-# L'esercizio PHP-15 per imparare a separare i file di connessione e includerli nelle varie pagine (come connessione.php, datiGenerali.php e il menu).
+# Gli ordini effettuati dagli utenti vengono salvati in acquisti.xml, con username, data, totale e dettaglio degli articoli acquistati.
 
 # 
 
-# L'esempio del carrello della spesa (Lezione 6) per la gestione della sessione utente.
+# MySQL viene mantenuto solo per la gestione degli utenti e il tracciamento della spesa totale.
+
+# 
+
+# Per la manipolazione dei file XML ho utilizzato il DOM, seguendo gli esempi visti a lezione nella directory XML2. Ho inoltre implementato la validazione DTD tramite il metodo validate() di DOMDocument.
 
 # 
 
 # Come farlo funzionare
 
-# Basta copiare la cartella del progetto dentro la cartella htdocs di XAMPP e lanciare la pagina install.php la prima volta per creare il database e le tabelle.
+# Basta copiare la cartella del progetto dentro htdocs di XAMPP e lanciare la pagina install-15.php la prima volta, per creare il database e le tabelle necessarie.
 
 # 
 
-# Nota sulle password del Database:
+# Nota sulla configurazione
 
-# Per seguire lo schema visto a lezione ed evitare di avere dati come localhost o i nomi delle tabelle "hard coded" nel codice, ho centralizzato tutta la configurazione.
-
-# Se usate una password diversa per MySQL (di solito su XAMPP è vuota, ma su MAMP è "root"), basterà cambiarla in un solo file:
+# Tutta la configurazione è centralizzata nel file DatiGenerali-14.php, che contiene host, username, password, nome del database (Compito3) e nomi delle tabelle.
 
 # 
 
-# datiGenerali.php: Contiene tutti i dati su user mysql, db name, password e i nomi delle tabelle.
-
-# 
-
-# Questo file viene poi incluso automaticamente nei due file principali:
-
-# 
-
-# connessione.php: in cui a regime il sito effettua la connessione al db per funzionare.
-
-# 
-
-# install.php: in cui si effettua la connessione iniziale al dbms per poi creare il database e le tabelle.
+# Questo file viene incluso in connessione-11.php, che si occupa di collegarsi al server e, se il database non esiste ancora, di crearlo automaticamente.
 

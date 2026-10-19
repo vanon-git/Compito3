@@ -2,6 +2,18 @@
 <!DOCTYPE acquisti SYSTEM "acquisti.dtd">
 <!-- Gli ordini verranno aggiunti qui automaticamente-->
 <acquisti>
+  <acquisto id="6920">
+    <username>Gimy02</username>
+    <date>18-10-2026 18:19:08</date>
+    <totale>1478.99</totale>
+    <articoli>
+      <articolo>
+        <nftId>SappySeals_4598</nftId>
+        <prezzo>1478.99</prezzo>
+        <quantita>1</quantita>
+      </articolo>
+    </articoli>
+  </acquisto>
   <acquisto id="1153">
     <username>g.pacio</username>
     <date>11-08-2026 19:15:20</date>
