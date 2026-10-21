@@ -24,7 +24,7 @@ if (mysqli_query($mysqliConnection, $sqlQuery)) {
 // --- POPOLAMENTO ---
 
 $sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti) 
-        VALUES ('Mattia', 'Vanon', 'admin', '1234', 0)";
+        VALUES ('Mattia', 'Vanon', 'MV2001', '1234', 0)";
         if ($resultQ = mysqli_query($mysqliConnection, $sql))
             printf("Utente inserito correttamente <br />\n");
         else {

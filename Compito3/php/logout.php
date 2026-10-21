@@ -13,7 +13,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
        <head>
-            <title>Homework1-1/3</title>
+            <title>Homework1-3/3</title>
             <!-- collego il css usando time() per evitare che il browser salvi la vecchia versione in cache -->
             <link rel="stylesheet" href="../css/Style.css?ts=<?=time()?>&quot"" type="text/css" />
        </head>
@@ -57,27 +57,21 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                      <ul>
                      <h1>Sappy Seals NFT</h1>
                      <li class="menu-link-a"><a href="../php/login.php"><Strong>Login</Strong></a></li>
-                     <li class="menu-link-b"><a href="../php/logout.php"><Strong>Logout</Strong></a></li>
+
                      </ul>
               </div>
 
               <!-- Parte centrale con il menu e il messaggio di saluto -->
               <div  class="center">
                      <ul>
-                     <li class="menu-link"><a href='../index.html'><strong>HOME</strong></a></li>
-                     <li class="menu-link"><a href='../file/NFT.html'><strong>Cos'&egrave un NFT?</strong></a></li>
-                     <li class="menu-link"><a href='../file/Blockchain.html'><strong>Cos'&egrave la blockchain?</strong></a></li>
-                     <li class="menu-link"><a href='../php/shop.php'><strong>Carrello</strong></a></li>
+                     <li class="menu-link"><a href='../index.php'><strong>HOME</strong></a></li>
+                     <li class="menu-link"><a href='../file/NFT.php'><strong>Cos'&egrave un NFT?</strong></a></li>
+                     <li class="menu-link"><a href='../file/Blockchain.php'><strong>Blockchain</strong></a></li>
+                     <li class="menu-link"><a href='../php/shop_xml.php'><strong>Shop</strong></a></li>
                      </ul>
               <div class="stile-logout">
                      <h1><em><Strong>Logout effettuato con successo </Strong></em></h1>
                      <h1><em><Strong>Grazie per aver visitato il sito , a presto </Strong></em></h1>
-              <div class="menu-link">
-                <a href="login.php" >Torna al Login</a>
-            </div>
-              <div class="menu-link">
-                <a href="../index.html" >Vai alla Home</a>
-            </div>
         </div>
 
         </div>
