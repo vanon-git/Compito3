@@ -124,9 +124,7 @@
                     $ListaNft = array(); // Array per raggruppare
 
                     // Conta le occorrenze di ogni NFT nel carrello
-                    // Avremo una cosa del genere: Array ( [Grande Muraglia, Cina] => 2 [Cristo Redentore, Rio de Janeiro] => 2 )
                     $conteggioCarrello = array_count_values($_SESSION['carrello']);
-                    //print_r($conteggioCarrello);
 
                     foreach ($conteggioCarrello as $nomeNFT => $quantita) {
                         if (isset($catalogoMap[$nomeNFT])) {

@@ -14,7 +14,7 @@
     // includo il file con lo stile css
     require_once("./stile_shop.php");
 
-    // Conta quanti biglietti con disponibilità limitata l'utente ha già acquistato negli Acquisti passati
+    // Conta quanti nft con disponibilità limitata l'utente ha già acquistato negli Acquisti passati
     // Per farlo leggiamo Acquisti.xml, file di verità sugli acquisiti effettuati fino ad ora
     // Calcola storico acquisti UNA VOLTA SOLA 
     $acquistatiStorico = array();
@@ -242,7 +242,7 @@
                             <span class="prezzo-scheda"><?php echo $prezzoValue; ?> &euro;</span>
 
                             <?php if ($disponibilita == 'esaurito'){  ?>
-                                    <!-- Biglietto esaurito: input disabilitato SENZA form -->
+                                    <!-- Nft esaurito: input disabilitato SENZA form -->
                                     <input type="submit" disabled value="Esaurito" class="bottone-esaurito"/>
 
                             <?php }elseif($disponibilita == 'limitato'){ ?>
