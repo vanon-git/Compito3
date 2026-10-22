@@ -16,6 +16,6 @@ Per la manipolazione dei file XML ho utilizzato il DOM, seguendo gli esempi vist
 
 Come farlo funzionare:
 
-Basta copiare la cartella del progetto dentro htdocs di XAMPP e lanciare la pagina install-15.php la prima volta, per creare il database e le tabelle necessarie.
-Tutta la configurazione è centralizzata nel file DatiGenerali-14.php, che contiene host, username, password, nome del database (Compito3) e nomi delle tabelle.
-Questo file viene incluso in connessione-11.php, che si occupa di collegarsi al server e, se il database non esiste ancora, di crearlo automaticamente.
+Basta copiare la cartella del progetto dentro htdocs di XAMPP e lanciare la pagina install.php, nella cartella php, la prima volta, per creare il database e le tabelle necessarie.
+Tutta la configurazione è centralizzata nel file DatiGenerali.php, che contiene host, username, password, nome del database (Compito3) e nomi delle tabelle.
+Questo file viene incluso in connessione.php, che si occupa di collegarsi al server e, se il database non esiste ancora, di crearlo automaticamente.
