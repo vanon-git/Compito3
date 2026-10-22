@@ -98,9 +98,9 @@
                         "SappySeals_6589" => "../imgCarr/imgcostosa1.png",
                         "SappySeals_8569" => "../imgCarr/imgcostosa5.png",
                         "SappySeals_2546" => "../imgCarr/imgcostosa9.png",
-                        "SappySeals_4598" => "../imgCarr/imgrara3.png",
-                        "SappySeals_1456" => "../imgCarr/imgrara7.png",
-                        "SappySeals_4587" => "../imgCarr/imgrara8.png",
+                        "SappySeals_4598" => "../imgCarr/imgrara3.jpg",
+                        "SappySeals_1456" => "../imgCarr/imgrara7.jpg",
+                        "SappySeals_4587" => "../imgCarr/imgrara8.jpg",
                     );
 
                     
